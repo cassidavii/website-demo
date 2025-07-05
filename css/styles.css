@@ -1,0 +1,33 @@
+body {
+    background-color: rgb(255,170,195);
+}
+
+.slot img {
+    width: 100%;            /* stretching to the slot-cell */
+    height: 100%;           /* stretch to the slot-cell */
+    object-fit: contain;    /* keep aspect ratio */
+    object-position: center;/* in the centre */
+    image-rendering: pixelated; /* to stop blur */
+  }
+
+  body {
+    background-color: rgb(255, 170, 195); /* cute pink */
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    height: 100vh;        /* full height */
+    margin: 0;            /* removing spacing */
+  }
+  
+  /* Wrapper that holds the image; width sets how big it appears */
+  .slot-container {
+    width: 600px;   
+  }
+  
+  /* Makeing the shell fill the width while keeping the aspect ratio */
+  .slot-shell {
+    width: 100%;
+    height: auto;
+    image-rendering: pixelated; 
+    display: block;            /* removes the tiny gap under the img */
+  }
