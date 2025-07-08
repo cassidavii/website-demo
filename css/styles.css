@@ -2,11 +2,12 @@ body {
     background-color: rgb(255,170,195);
 }
 
+/* --- slot shell --- */
 .slot img {
-    width: 100%;            /* stretching to the slot-cell */
-    height: 100%;           /* stretch to the slot-cell */
+    width: 100%;            
+    height: 100%;           
     object-fit: contain;    /* keep aspect ratio */
-    object-position: center;/* in the centre */
+    object-position: center;
     image-rendering: pixelated; /* to stop blur */
   }
 
@@ -29,5 +30,58 @@ body {
     width: 100%;
     height: auto;
     image-rendering: pixelated; 
-    display: block;            /* removes the tiny gap under the img */
+    display: block;           /* removes the tiny gap under the img */
   }
+
+  /* --- Spin button --- */
+#spin-button {
+  background: none;
+  border: none;
+  padding: 0;
+  cursor: pointer;
+  position: absolute;   
+  bottom: 115px;
+  left: 50%;
+  transform: translateX(-50%); 
+}
+
+#spin-button img {
+  width: 220px;        
+  image-rendering: pixelated;  /* keep crisp edges */
+}
+
+/* -------- reel grid -------- */
+#reels {
+  position: absolute;      /* lets us place it on top of shell window */
+  top: 220px; left: 529px;  /* tweak until it sits perfectly */
+  width: 404px;            /* 5 columns × 80-ish px */
+  height: 345px;           /* 4 rows    × 80-ish px */
+  display: grid;
+  grid-template-columns: repeat(5, 1fr);
+  grid-template-rows: repeat(4, 1fr);
+  overflow: hidden;        /* hide icons that slide in/out */
+}
+
+.cell img {
+  width: 80%;
+  height: 80%;
+  image-rendering: pixelated;
+}
+
+/* -------- individual grid square -------- */
+.cell {
+  display: flex;            /* enables flex alignment                      */
+  align-items: center;      /* vertically center the child <img>           */
+  justify-content: center;  /* horizontally center the child <img>         */
+  overflow: hidden;         /* hides the small overflow during spin shift  */
+}
+
+.cell img {
+  width: 100%;          /* leaves ~6 % padding on every side (88 + 6 + 6 ≈ 100) */
+  height: auto;        /* keep aspect - ratio                                 */
+  image-rendering: pixelated;
+}
+.cell img {
+  /* existing lines … */
+  margin-top: 1%;   /* positive = nudges DOWN, negative = UP */
+}

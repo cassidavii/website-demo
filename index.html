@@ -1,17 +1,33 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-    <meta charset="UTF-8" />
-    <title>Pixel Slot Game!</title>
-    <link rel="stylesheet" href="css/styles.css"/>
-    <link rel="icon" type="image/png" href="z-assets/favicon.png" />
+  <meta charset="UTF-8" />
+  <title>Pixel Slot</title>
+  <link rel="stylesheet" href="css/styles.css">
+  <link rel="icon" type="image/png" href="z-assets/favicon.png">
 </head>
-<body>
-    <div class="slot-container">
-        <!-- the slot image -->
-        <img src="z-assets/slot_shell.png" class="slot-shell" alt="Slot machine shell" />
-      </div>
 
-    <script src="js/script.js"></script>
+<body>
+  <div class="slot-container">
+    <!-- Slot machine shell -->
+    <img src="z-assets/slot_shell.png" class="slot-shell" alt="Slot machine shell">
+
+    <!-- Spin button (no divs inside) -->
+    <button id="spin-button">
+      <img id="spin-img" src="z-assets/spin.png" alt="Spin">
+    </button>
+
+    <!-- Reel window lives outside the button -->
+    <div id="reels">
+      <!-- 4 rows × 5 cols = 20 cells -->
+      <!-- JS will fill each cell with an <img> -->
+      <div class="cell"></div><div class="cell"></div><div class="cell"></div><div class="cell"></div><div class="cell"></div>
+      <div class="cell"></div><div class="cell"></div><div class="cell"></div><div class="cell"></div><div class="cell"></div>
+      <div class="cell"></div><div class="cell"></div><div class="cell"></div><div class="cell"></div><div class="cell"></div>
+      <div class="cell"></div><div class="cell"></div><div class="cell"></div><div class="cell"></div><div class="cell"></div>
+    </div>
+  </div>
+
+  <script src="js/script.js"></script>
 </body>
-<html>
+</html>
