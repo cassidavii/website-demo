@@ -1,3 +1,12 @@
+
+/* ------------- overall machine wrapper --------------- */
+#machine {
+  width: 90vw;          /* 90 % of viewport width         */
+  max-width: 600px;     /* never grow bigger than desktop */
+  margin: 40px auto 0;  /* top margin then auto-center    */
+  position: relative;   /* establishes local coord system */
+}
+
 body {
     background-color: rgb(255,170,195);
 }
@@ -22,7 +31,8 @@ body {
   
   /* Wrapper that holds the image; width sets how big it appears */
   .slot-container {
-    width: 600px;   
+    width: 100%;
+    position: relative;  
   }
   
   /* Makeing the shell fill the width while keeping the aspect ratio */
@@ -52,14 +62,15 @@ body {
 
 /* -------- reel grid -------- */
 #reels {
-  position: absolute;      /* lets us place it on top of shell window */
-  top: 220px; left: 529px;  /* tweak until it sits perfectly */
-  width: 404px;            /* 5 columns × 80-ish px */
-  height: 345px;           /* 4 rows    × 80-ish px */
+  position: absolute;
+  top: 28%;   /* distance from top of cabinet to grid (tweak) */
+  left: 12%;  /* distance from left side to grid (tweak)      */
+  width: 76%; /* grid window width                            */
+  aspect-ratio: 5 / 4;
   display: grid;
   grid-template-columns: repeat(5, 1fr);
-  grid-template-rows: repeat(4, 1fr);
-  overflow: hidden;        /* hide icons that slide in/out */
+  grid-auto-rows: 1fr;
+  overflow: hidden;
 }
 
 .cell img {

@@ -8,26 +8,30 @@
 </head>
 
 <body>
-  <div class="slot-container">
-    <!-- Slot machine shell -->
-    <img src="z-assets/slot_shell.png" class="slot-shell" alt="Slot machine shell">
-
-    <!-- Spin button (no divs inside) -->
-    <button id="spin-button">
-      <img id="spin-img" src="z-assets/spin.png" alt="Spin">
-    </button>
-
-    <!-- Reel window lives outside the button -->
-    <div id="reels">
-      <!-- 4 rows × 5 cols = 20 cells -->
-      <!-- JS will fill each cell with an <img> -->
-      <div class="cell"></div><div class="cell"></div><div class="cell"></div><div class="cell"></div><div class="cell"></div>
-      <div class="cell"></div><div class="cell"></div><div class="cell"></div><div class="cell"></div><div class="cell"></div>
-      <div class="cell"></div><div class="cell"></div><div class="cell"></div><div class="cell"></div><div class="cell"></div>
-      <div class="cell"></div><div class="cell"></div><div class="cell"></div><div class="cell"></div><div class="cell"></div>
+    <div id="machine">
+      <div class="slot-container">
+  
+        <!-- shell artwork -->
+        <img src="z-assets/slot_shell.png" class="slot-shell" alt="Slot shell">
+  
+        <!-- -------------- reel window (add this block) ------------ -->
+        <div id="reels">
+          <!-- 4 rows × 5 cols = 20 cells -->
+          <div class="cell"></div><div class="cell"></div><div class="cell"></div><div class="cell"></div><div class="cell"></div>
+          <div class="cell"></div><div class="cell"></div><div class="cell"></div><div class="cell"></div><div class="cell"></div>
+          <div class="cell"></div><div class="cell"></div><div class="cell"></div><div class="cell"></div><div class="cell"></div>
+          <div class="cell"></div><div class="cell"></div><div class="cell"></div><div class="cell"></div><div class="cell"></div>
+        </div>
+        <!-- -------------------------------------------------------- -->
+  
+        <!-- button overlay -->
+        <button id="spin-button">
+          <img id="spin-img" src="z-assets/spin.png" alt="Spin">
+        </button>
+  
+      </div>
     </div>
-  </div>
-
-  <script src="js/script.js"></script>
-</body>
-</html>
+  
+    <!-- script LAST so it runs after the grid exists -->
+    <script src="js/script.js"></script>
+  </body>  
