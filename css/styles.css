@@ -1,4 +1,10 @@
 
+/* ===== utilities ================================= */
+.hidden { display: none !important }       /* anything with this class is invisible */
+
+/* put all absolute overlays *inside* .slot-container in their own layer */
+.slot-container { position: relative; }   /* you already have this line */
+
 /* ------------- overall machine wrapper --------------- */
 #machine {
   width: 90vw;          /* 90 % of viewport width         */
@@ -50,7 +56,7 @@ body {
   padding: 0;
   cursor: pointer;
   position: absolute;   
-  bottom: 115px;
+  bottom: 13%;
   left: 50%;
   transform: translateX(-50%); 
 }
@@ -64,8 +70,8 @@ body {
 #reels {
   position: absolute;
   top: 28%;   /* distance from top of cabinet to grid (tweak) */
-  left: 12%;  /* distance from left side to grid (tweak)      */
-  width: 76%; /* grid window width                            */
+  left: 14.5%;  /* distance from left side to grid (tweak)      */
+  width: 70%; /* grid window width                            */
   aspect-ratio: 5 / 4;
   display: grid;
   grid-template-columns: repeat(5, 1fr);
@@ -96,3 +102,40 @@ body {
   /* existing lines … */
   margin-top: 1%;   /* positive = nudges DOWN, negative = UP */
 }
+/* ===== win overlay (covers the cabinet) =========== */
+#win-overlay {
+  position: absolute;   /* pinned to .slot-container */
+  inset: 0;             /* top:0; right:0; bottom:0; left:0 */
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  z-index: 999;        /* above everything else */
+}
+
+/* the YOU-WIN pixel panel itself */
+#win-img {
+  width: 100%;          /* scales with cabinet */
+  max-width: px;
+  height: auto;
+  image-rendering: pixelated;
+}
+
+/* Thanks button sits at bottom-center of the panel */
+#thanks-btn {
+  position: absolute;
+  bottom: 32%;          /* tweak until it sits on the panel */
+  left: 38%;
+  transform: translateX(-50%);
+  background: none;
+  border: none;
+  padding: 0;
+  cursor: pointer;
+}
+
+#thanks-img {
+  width: 400%;          /* tweak until looks good */
+  height: auto;
+  image-rendering: pixelated;
+}
+
+

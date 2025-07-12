@@ -42,6 +42,40 @@ document.addEventListener('DOMContentLoaded', () => {
       cell.appendChild(img);
     }
   
+    /* ========== GRID HELPERS ========== */
+function getRows() {
+    const COLS = 5, ROWS = 4;
+    const rows = Array.from({ length: ROWS }, () => []);
+    cells.forEach((cell, i) => {
+      const rowIndex = Math.floor(i / COLS);          // 0-3
+      const src = cell.firstChild?.getAttribute('src');
+      rows[rowIndex].push(src);
+    });
+    return rows;           // 4 arrays of 5 items each
+  }
+  
+  function getCols() {
+    const COLS = 5, ROWS = 4;
+    const cols = Array.from({ length: COLS }, () => []);
+    cells.forEach((cell, i) => {
+      const colIndex = i % COLS;                      // 0-4
+      const src = cell.firstChild?.getAttribute('src');
+      cols[colIndex].push(src);
+    });
+    return cols;           // 5 arrays of 4 items each
+  }
+  
+  function allEqual(arr) {
+    return arr.every(src => src && src === arr[0]);
+  }
+  
+  function isWinning() {
+    const rows = getRows();
+    const cols = getCols();
+    return rows.some(allEqual) || cols.some(allEqual);
+  }
+  
+
     /* ---------- Button triggers the spin ---------- */
     spinBtn.addEventListener('mouseup', startSpin);
     spinBtn.addEventListener('touchend', startSpin);
@@ -60,7 +94,21 @@ document.addEventListener('DOMContentLoaded', () => {
         spinColumn(col, 900 + delay, delay);
       });
   
-      setTimeout(() => (spinBtn.disabled = false), 900 + COLS * 120);
+      const settleTime = 900 + COLS * 120;
+
+      /* re-enable button */
+      setTimeout(() => { spinBtn.disabled = false; }, settleTime);
+      
+      /* DEBUG — inspect grid content */
+      setTimeout(() => {
+        console.clear();
+        console.log('ROWS:', getRows());
+        console.log('COLS:', getCols());
+        console.log('isWinning() →', isWinning());
+        if (isWinning()) setTimeout(showWin, 300);
+      }, settleTime);
+      
+  
     }
   
     /* ---------- Column animation ---------- */
